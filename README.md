@@ -14,6 +14,10 @@ https://documenter.getpostman.com/view/4984010/Tzz4QeV3
 
 
 
+
+
+
+
 ### **조직도 조회** 
 
 [GET] [http://{](http://{/)서버URL}/org/organizations
@@ -55,6 +59,10 @@ https://documenter.getpostman.com/view/4984010/Tzz4QeV3
 
  
 
+
+
+
+
 ### **부서 관리**
 
 \# root가 true인 department는 하나만 등록
@@ -94,6 +102,10 @@ https://documenter.getpostman.com/view/4984010/Tzz4QeV3
 (3) 부서 삭제: [DELETE] [http://{](http://{/)서버URL}/org/dept/{deptId}
 
  
+
+
+
+
 
 ### **부서원 관리**
 
