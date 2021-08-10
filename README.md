@@ -2,19 +2,19 @@
 
 
 
-#### **api 서버 구동 법** 
+## **api 서버 구동 법** 
 
 터미널 실행 후 <u>java -jar target/organizations-0.0.1-SNAPSHOT.jar</u> 입력
 
 
 
-#### **API CRUD 예시**
+## **API CRUD 예시**
 
 https://documenter.getpostman.com/view/4984010/Tzz4QeV3
 
 
 
-1. ##### **조직도 조회** 
+1. ### **조직도 조회** 
 
 [GET] [http://{](http://{/)서버URL}/org/organizations
 
@@ -55,7 +55,7 @@ https://documenter.getpostman.com/view/4984010/Tzz4QeV3
 
  
 
-2. ##### **부서 관리**
+2. ### **부서 관리**
 
 \# root가 true인 department는 하나만 등록
 
@@ -95,7 +95,7 @@ https://documenter.getpostman.com/view/4984010/Tzz4QeV3
 
  
 
-3. ##### **부서원 관리**
+3. ### **부서원 관리**
 
 (1) 부서원 추가 : [POST] [http://{](http://{/)서버URL}/org/member
 
