@@ -12,11 +12,7 @@
 
 https://documenter.getpostman.com/view/4984010/Tzz4QeV3
 
-
-
-
-
-
+<br/><br/>
 
 ### **조직도 조회** 
 
@@ -57,11 +53,7 @@ https://documenter.getpostman.com/view/4984010/Tzz4QeV3
 
 [GET] [http://{](http://{/)서버URL}/org/organizations?searchType=member&searchKeyword=abc
 
- 
-
-
-
-
+<br/><br/>
 
 ### **부서 관리**
 
@@ -101,11 +93,7 @@ https://documenter.getpostman.com/view/4984010/Tzz4QeV3
 
 (3) 부서 삭제: [DELETE] [http://{](http://{/)서버URL}/org/dept/{deptId}
 
- 
-
-
-
-
+<br/><br/>
 
 ### **부서원 관리**
 
