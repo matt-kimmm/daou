@@ -4,8 +4,9 @@
 
 ## **api 서버 구동 법** 
 
-터미널 실행 후 <u>java -jar organizations-0.0.1-SNAPSHOT.jar</u> 입력
-
+터미널 실행 후
+<u>java -jar organizations-0.0.1-SNAPSHOT.jar</u>
+입력
 
 
 ## **API CRUD 예시**
