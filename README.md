@@ -1,4 +1,20 @@
-\1. 조직도 조회 
+# API 서버 구동법 및 사용방법
+
+
+
+#### **api 서버 구동 법** 
+
+터미널 실행 후 <u>java -jar target/organizations-0.0.1-SNAPSHOT.jar</u> 입력
+
+
+
+#### **API CRUD 예시**
+
+https://documenter.getpostman.com/view/4984010/Tzz4QeV3
+
+
+
+1. ##### **조직도 조회** 
 
 [GET] [http://{](http://{/)서버URL}/org/organizations
 
@@ -17,19 +33,29 @@
 
  
 
-(1) 전체 조회 : [GET] [http://{](http://{/)서버URL}/org/organizations 
+(1) 전체 조회 : 
 
-(2) deptOnly 조회 : [GET] [http://{](http://{/)서버URL}/org/organizations?deptOnly=true 
+[GET] [http://{](http://{/)서버URL}/org/organizations 
 
-(3) deptCode 조회 : [GET] [http://{](http://{/)서버URL}/org/organizations?deptCode=D110
+(2) deptOnly 조회 : 
 
-(4) 부서명 키워드 검색 조회 : [GET] [http://{](http://{/)서버URL}/org/organizations?searchType=dept&searchKeyword=abc
+[GET] [http://{](http://{/)서버URL}/org/organizations?deptOnly=true 
 
-(5) 부서원 키워드 검색 조회 : [GET] [http://{](http://{/)서버URL}/org/organizations?searchType=member&searchKeyword=abc
+(3) deptCode 조회 : 
+
+[GET] [http://{](http://{/)서버URL}/org/organizations?deptCode=D110
+
+(4) 부서명 키워드 검색 조회 : 
+
+[GET] [http://{](http://{/)서버URL}/org/organizations?searchType=dept&searchKeyword=abc
+
+(5) 부서원 키워드 검색 조회 : 
+
+[GET] [http://{](http://{/)서버URL}/org/organizations?searchType=member&searchKeyword=abc
 
  
 
-2. 부서 관리
+2. ##### **부서 관리**
 
 \# root가 true인 department는 하나만 등록
 
@@ -69,7 +95,7 @@
 
  
 
-3. 부서원 관리
+3. ##### **부서원 관리**
 
 (1) 부서원 추가 : [POST] [http://{](http://{/)서버URL}/org/member
 
@@ -104,3 +130,5 @@
  
 
 \+ Exception 정의 : src > java > com.daou.organizations > config 내
+
+\+ Git주소 : https://github.com/mattKim1992/daou
