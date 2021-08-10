@@ -6,6 +6,7 @@ import com.daou.organizations.service.department.dto.DepartmentDto;
 import com.daou.organizations.service.member.MemberService;
 import com.daou.organizations.service.member.dto.MemberDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -42,17 +44,14 @@ class OrganizationControllerTest {
     @Autowired
     MemberService memberService;
 
-    @BeforeAll
-    static void setUp() {
-        // 조직도 작성
+    @BeforeEach
+    void setUp() {
 
-    }
+        departmentService.deleteAllDepartment();
+        memberService.deleteAllMember();
 
-    @Test
-    @DisplayName("조직도 전체 조회")
-    public void get_all_organization_200() {
+        //조직도 작성
 
-        // Given
         DepartmentDto companyDto = new DepartmentDto("ABC회사",null,true,0);
         NodeModel company = departmentService.createDepartment(companyDto);
 
@@ -75,60 +74,133 @@ class OrganizationControllerTest {
         NodeModel department120 = departmentService.createDepartment(departmentDto120);
 
         DepartmentDto departmentDto121 = new DepartmentDto("플랫폼서비스팀", "D121", false, department120.getId());
-        NodeModel department121 = departmentService.createDepartment(departmentDto121);
+        departmentService.createDepartment(departmentDto121);
 
         DepartmentDto departmentDto122 = new DepartmentDto("모바일개발팀", "D122", false, department120.getId());
-        NodeModel department122 = departmentService.createDepartment(departmentDto122);
-
+        departmentService.createDepartment(departmentDto122);
 
         List<Long> companyIds = new ArrayList<>();
         companyIds.add(company.getId());
 
         MemberDto memberDto1 = new MemberDto("김다우", true, companyIds);
-        NodeModel member1 = memberService.createMember(memberDto1);
+        memberService.createMember(memberDto1);
 
         List<Long> divisionIds = new ArrayList<>();
         divisionIds.add(division.getId());
 
         MemberDto memberDto2 = new MemberDto("김개발", true, divisionIds);
-        NodeModel member2 = memberService.createMember(memberDto2);
+        memberService.createMember(memberDto2);
 
-        List<Long> departmentIds1 = new ArrayList<>();
-        departmentIds1.add(department111.getId());
+        List<Long> departmentIds111 = new ArrayList<>();
+        departmentIds111.add(department111.getId());
 
-        MemberDto memberDto3 = new MemberDto("장명부", false, departmentIds1);
-        NodeModel member3 = memberService.createMember(memberDto3);
+        MemberDto memberDto3 = new MemberDto("장명부", false, departmentIds111);
+        memberService.createMember(memberDto3);
 
-        MemberDto memberDto4 = new MemberDto("최동원", false, departmentIds1);
-        NodeModel member4 = memberService.createMember(memberDto4);
+        MemberDto memberDto4 = new MemberDto("최동원", true, departmentIds111);
+        memberService.createMember(memberDto4);
 
+        departmentIds111.add(department112.getId());
+        MemberDto memberDto5 = new MemberDto("김시진", false, departmentIds111);
+        memberService.createMember(memberDto5);
 
+        List<Long> departmentIds112 = new ArrayList<>();
+        departmentIds112.add(department112.getId());
 
+        MemberDto memberDto7 = new MemberDto("김일융", false, departmentIds112);
+        memberService.createMember(memberDto7);
+
+        MemberDto memberDto8 = new MemberDto("박철순", true, departmentIds112);
+        memberService.createMember(memberDto8);
+
+        List<Long> departmentIds113 = new ArrayList<>();
+        departmentIds113.add(department113.getId());
+
+        MemberDto memberDto9 = new MemberDto("선동열", true, departmentIds113);
+        memberService.createMember(memberDto9);
+
+        MemberDto memberDto10 = new MemberDto("박찬호", false, departmentIds113);
+        memberService.createMember(memberDto10);
+
+        MemberDto memberDto11 = new MemberDto("니퍼트", false, departmentIds113);
+        memberService.createMember(memberDto11);
 
     }
 
     @Test
-    @DisplayName("조직도 부만서 조회")
-    public void get_dept_only_organization_200() {
+    @DisplayName("조직도 전체 조회")
+    public void get_all_organization_200() throws Exception  {
 
+        // Given
+
+        // When
+        mockMvc.perform(get("/api/organizations")
+                .contentType(MediaType.APPLICATION_JSON))
+                // Then
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("조직도 부서만 조회")
+    public void get_dept_only_organization_200() throws Exception{
+
+        // Given
+
+        // When
+        mockMvc.perform(get("/api/organizations")
+                .param("deptOnly", "true")
+                .contentType(MediaType.APPLICATION_JSON))
+                // Then
+                .andDo(print())
+                .andExpect(status().isOk());
     }
 
     @Test
     @DisplayName("조직도 부서 코드로 조회")
-    public void get_organization_by_dept_code_200() {
+    public void get_organization_by_dept_code_200() throws Exception{
 
+        // Given
+
+        // When
+        mockMvc.perform(get("/api/organizations")
+                .param("deptCode", "D110")
+                .contentType(MediaType.APPLICATION_JSON))
+                // Then
+                .andDo(print())
+                .andExpect(status().isOk());
     }
 
     @Test
-    @DisplayName("조직도 멤버 조회")
-    public void get_organization_by_member_search_200() {
+    @DisplayName("조직도 부서 키워드 조회")
+    public void get_organization_by_dept_search_200() throws Exception{
 
+        // Given
+
+        // When
+        mockMvc.perform(get("/api/organizations")
+                .param("searchType", "dept")
+                .param("searchKeyword", "플랫폼")
+                .contentType(MediaType.APPLICATION_JSON))
+                // Then
+                .andDo(print())
+                .andExpect(status().isOk());
     }
 
     @Test
-    @DisplayName("조직도 부서로 조회")
-    public void get_organization_by_dept_search_200() {
+    @DisplayName("조직도 멤버 키워드 조회")
+    public void get_organization_by_member_search_200() throws Exception{
 
+        // Given
+
+        // When
+        mockMvc.perform(get("/api/organizations")
+                .param("searchType", "member")
+                .param("searchKeyword", "플랫폼")
+                .contentType(MediaType.APPLICATION_JSON))
+                // Then
+                .andDo(print())
+                .andExpect(status().isOk());
     }
 
 }

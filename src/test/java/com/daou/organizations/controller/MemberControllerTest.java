@@ -71,7 +71,7 @@ class MemberControllerTest {
         departmentIds.add(company.getId());
 
         // When
-        MemberDto requestBody = new MemberDto("류현진", true, departmentIds);
+        MemberDto requestBody = new MemberDto("김다우", true, departmentIds);
 
         mockMvc.perform(post("/org/member")
                 .content(objectMapper.writeValueAsString(requestBody))
@@ -123,12 +123,11 @@ class MemberControllerTest {
         List<Long> departmentIds = new ArrayList<>();
         departmentIds.add(company.getId());
 
-        MemberDto memberDto = new MemberDto("류현진", true, departmentIds);
+        MemberDto memberDto = new MemberDto("김다우", true, departmentIds);
         NodeModel member = memberService.createMember(memberDto);
 
         // When
         mockMvc.perform(delete("/org/member/" + member.getId()))
-
                 // Then
                 .andDo(print())
                 .andExpect(status().isOk());

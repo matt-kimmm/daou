@@ -4,7 +4,7 @@
 
 ## **api 서버 구동 법** 
 
-터미널 실행 후 <u>java -jar target/organizations-0.0.1-SNAPSHOT.jar</u> 입력
+터미널 실행 후 <u>java -jar organizations-0.0.1-SNAPSHOT.jar</u> 입력
 
 
 
@@ -16,7 +16,7 @@ https://documenter.getpostman.com/view/4984010/Tzz4QeV3
 
 ### **조직도 조회** 
 
-[GET] [http://{](http://{/)서버URL}/org/organizations
+[GET] [http://{](http://{/)서버URL}/api/organizations
 
 파라메터는 RequestPram
 
@@ -35,23 +35,23 @@ https://documenter.getpostman.com/view/4984010/Tzz4QeV3
 
 (1) 전체 조회 : 
 
-[GET] [http://{](http://{/)서버URL}/org/organizations 
+[GET] [http://{](http://{/)서버URL}/api/organizations 
 
 (2) deptOnly 조회 : 
 
-[GET] [http://{](http://{/)서버URL}/org/organizations?deptOnly=true 
+[GET] [http://{](http://{/)서버URL}/api/organizations?deptOnly=true 
 
 (3) deptCode 조회 : 
 
-[GET] [http://{](http://{/)서버URL}/org/organizations?deptCode=D110
+[GET] [http://{](http://{/)서버URL}/api/organizations?deptCode=D110
 
 (4) 부서명 키워드 검색 조회 : 
 
-[GET] [http://{](http://{/)서버URL}/org/organizations?searchType=dept&searchKeyword=abc
+[GET] [http://{](http://{/)서버URL}/api/organizations?searchType=dept&searchKeyword=abc
 
 (5) 부서원 키워드 검색 조회 : 
 
-[GET] [http://{](http://{/)서버URL}/org/organizations?searchType=member&searchKeyword=abc
+[GET] [http://{](http://{/)서버URL}/api/organizations?searchType=member&searchKeyword=abc
 
 <br/><br/>
 

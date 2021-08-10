@@ -47,6 +47,7 @@ class DepartmentControllerTest {
     /***********************************************
      * 회사 테스트
      ***********************************************/
+
     @Test
     @DisplayName("회사를 추가한다.")
     public void create_company_200() throws Exception {
@@ -248,6 +249,5 @@ class DepartmentControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
-
 
 }
